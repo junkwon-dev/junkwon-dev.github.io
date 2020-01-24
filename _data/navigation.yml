@@ -4,9 +4,9 @@ main:
       url: /about/
     - title: "Categories"
       url: /categories/
-    - title: "PS"
-      url: /ps/
-    - title: "post"
+    - title: "Ps"
+      url: /categories/ps/
+    - title: "Post"
       url: /posts/
   # - title: "About"
   #   url: https://mmistakes.github.io/minimal-mistakes/about/
