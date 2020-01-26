@@ -2,11 +2,11 @@
 main:
     - title: "JunInfo"
       url: /about/
+    - title: "ps"
+      url: /categories/ps/
     - title: "Categories"
       url: /categories/
-    - title: "Ps"
-      url: /categories/ps/
-    - title: "Post"
+    - title: "Posts"
       url: /posts/
   # - title: "About"
   #   url: https://mmistakes.github.io/minimal-mistakes/about/
