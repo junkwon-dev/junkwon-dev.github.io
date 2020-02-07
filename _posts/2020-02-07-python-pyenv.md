@@ -67,7 +67,9 @@ $ echo 'export PATH="$PYENV_ROOT/bin:$PATH"' >> ~/.zhsrc
 $ echo 'eval "$(pyenv init -)"' >> ~/.zshrc
 $ source ~/.zshrc
 ```  
-_bash터미널을 사용한다면 끝에 ~/.zshrc를 ~/.bash\_profile 로 바꾸어 주어야 한다._
+
+bash터미널을 사용한다면 끝에 ~/.zshrc를 ~/.bash\_profile 로 바꾸어 주어야 한다.
+
 
 ### 파이썬 설치
 
@@ -75,7 +77,7 @@ _bash터미널을 사용한다면 끝에 ~/.zshrc를 ~/.bash\_profile 로 바꾸
 pyenv install -l
 ```
 를 입력해본다.
-[이미지]
+![사진1](/assets/img/pyenv1.png)
 처럼 리스트가 뜨면 성공이다.  
 나의 경우엔 3.7.4버전을 설치할 것이므로 다음을 입력해준다.  
 
@@ -105,7 +107,7 @@ $ source ~/.zshrc
 가상환경을 만들고 실행한다.  
 
 ```bash
-$ pyenv virtualenv 3.7.4(원하는파이썬버전) web_crawler(내가 원하는 가상환경 이름)
+$ pyenv virtualenv 3.7.4(원하는파이썬버전) web\_crawler(내가 원하는 가상환경 이름)
 $ pyenv versions # 잘 추가되었는지 확인한다.
 $ pyenv activate web_crawler  # 가상환경 실행
 $ pyenv deactivate # 가상환경 끄기
@@ -156,9 +158,10 @@ $ ./example.py
 ```
 
 이 글을 잘 따라했다면 밑과 같은 결과를 얻을 것이다.
-[이미지]
+![이미지](/assets/img/pyenv2.png)
+  
 
-
+<!--
 ### 웹에서 정보 가져오기
 > [!IMPORTANT]  
 >내 컴퓨터 환경 : Mac OS, Unix, zsh  
@@ -170,3 +173,4 @@ $ ./example.py
 나는 두가지 다 관심이 있는데 먼저 해보려고 하는 것은 프로그래밍이다.  
 [나만의 웹 크롤러 만들기]("https://beomi.github.io/gb-crawling/")를 참고하여 간단한 웹 크롤러 작업 환경을 구성해보겠다.  
 Mac Os, 그중 zsh(bash)환경으로 많은 부분을 해결하고 싶은 초보 개발자에게 많은 도움이 될 것 같다.
+-->
