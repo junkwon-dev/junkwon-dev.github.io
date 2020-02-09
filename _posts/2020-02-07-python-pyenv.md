@@ -36,13 +36,13 @@ last_modified_at : 2020-02-07 18:51:00
 ### brew 설치 
 패키지 관리자(homebrew)를 사용할 것이므로 homebrew부터 설치한다. 패키지 관리자는 나중에 따로 포스팅하도록 하겠다.
 <https://brew.sh/index_ko> 에 들어가서 Homebrew설치하기 밑에 있는 코드
+를 자신이 사용하고 있는 터미널에 붙여넣기한다.
+(일반적인 Mac OS터미널의 경우 bash일 것이다. 자신이 좀 더 관심이 있다면 zsh, ITerm2 등을 설치하면 좋다. 이 부분은 생략하겠다.)  
+
 
 ```bash
 /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 ```
-
-를 자신이 사용하고 있는 터미널에 붙여넣기한다.
-(일반적인 Mac OS터미널의 경우 bash일 것이다. 자신이 좀 더 관심이 있다면 zsh, ITerm2 등을 설치하면 좋다. 이 부분은 생략하겠다.)  
 
 ### pyenv 설치
 이제 터미널을 껐다 킨 후(_brew 명령어가 듣지 않을 수도 있다._), brew명령어를 이용해 pyenv를 설치한다.  
@@ -85,7 +85,7 @@ pyenv install -l
 pyenv install 3.7.4
 ```  
  
-잘 설치되있는지 확인해본다.  
+잘 설치돼있는지 확인해본다.  
 
 ```bash
 $ pyenv versions
@@ -95,7 +95,7 @@ $ pyenv versions
 
 ### 파이썬 가상개발환경 만들기
 
-virtualevn를 설치한다.  
+virtualenv를 설치한다.  
 
 ```bash
 $ brew install pyenv-virtualenv
@@ -107,7 +107,7 @@ $ source ~/.zshrc
 가상환경을 만들고 실행한다.  
 
 ```bash
-$ pyenv virtualenv 3.7.4(원하는파이썬버전) web\_crawler(내가 원하는 가상환경 이름)
+$ pyenv virtualenv 3.7.4(원하는파이썬버전) web_crawler(내가 원하는 가상환경 이름)
 $ pyenv versions # 잘 추가되었는지 확인한다.
 $ pyenv activate web_crawler  # 가상환경 실행
 $ pyenv deactivate # 가상환경 끄기
@@ -143,12 +143,12 @@ print("hello world")
 ```
 
 사실 첫줄이 가장 중요한데, 저렇게 적으면 가상환경 파이썬,
+밑 코드는 시스템 파이썬이라는 사실만 알아두자. 
 
 ```python
 #!/usr/bin/python
 ```
 
-은 시스템 파이썬이라는 사실만 알아두자. 
 
 파이썬을 실행파일로 만든 뒤 실행해보자.
 
