@@ -1,6 +1,6 @@
 ---
-title : "터미널에서 파이썬 설치 및 실행하기 (bash,zsh)"
-excerpt : "가상환경 설치와 사용 방법을 알아본다"
+title : "맥북에서 가상환경을 설치하는 이유와 방법(pyenv)"
+excerpt : "파이썬을 리눅스에서 실행하는 방법도 알 수 있다."
 categories : 
   - python
 tags :
