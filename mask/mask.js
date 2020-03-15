@@ -28,7 +28,7 @@ function getRemain(text) {
         return "2개 이상 30개 미만";
     }
     else if (text === 'empty') {
-        return "1개 이하";
+        return "없음";
     }
     else if (text === 'break') {
         return "판매 중지";
