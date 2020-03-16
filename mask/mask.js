@@ -55,9 +55,13 @@ function showMask(location) {
                 whenSt.innerText = arr[i].stock_at;
                 whenCr.innerText = arr[i].created_at;
                 ad.innerText = arr[i].addr;
+                const addMap=document.createElement("a");
+                addMap.setAttribute("href",`https://search.naver.com/search.naver?query=${arr[i].addr}`);
+                addMap.setAttribute("class","text-warning stretched-link");
+                addMap.appendChild(ad);
                 st.innerText = getRemain(arr[i].remain_stat);
                 type.innerText=getType(arr[i].type);
-                ch.appendChild(ad);
+                ch.appendChild(addMap);
                 ch.appendChild(type);
                 ch.appendChild(whenCr);
                 ch.appendChild(whenSt);
