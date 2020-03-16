@@ -52,16 +52,19 @@ function showMask(location) {
                 const whenCr = document.createElement("td");
                 const st = document.createElement("td");
                 const type = document.createElement("td");
-                whenSt.innerText = arr[i].stock_at;
-                whenCr.innerText = arr[i].created_at;
-                ad.innerText = arr[i].addr;
                 const addMap=document.createElement("a");
+                let tmpText=document.createTextNode(arr[i].addr);
                 addMap.setAttribute("href",`https://search.naver.com/search.naver?query=${arr[i].addr}`);
-                addMap.setAttribute("class","text-warning stretched-link");
-                addMap.appendChild(ad);
+                addMap.setAttribute("class","text-warning");
+                addMap.appendChild(tmpText);
+                ad.appendChild(addMap);
+                tmpText=document.createTextNode(arr[i].stock_at);
+                whenSt.appendChild(tmpText);
+                tmpText=document.createTextNode(arr[i].created_at);
+                whenCr.appendChild(tmpText);
                 st.innerText = getRemain(arr[i].remain_stat);
                 type.innerText=getType(arr[i].type);
-                ch.appendChild(addMap);
+                ch.appendChild(ad);
                 ch.appendChild(type);
                 ch.appendChild(whenCr);
                 ch.appendChild(whenSt);
@@ -69,8 +72,7 @@ function showMask(location) {
                 maskTable.appendChild(ch);
             }
 
-        });
-    getLocation();
+        }).then(getLocation);
 }
 
 function saveLocation(text) {
@@ -84,7 +86,6 @@ function handleSubmit(event) {
 }
 
 function getLocation() {
-    form.classList.add(SHOWING_CN);
     form.addEventListener("submit", handleSubmit);
 }
 
