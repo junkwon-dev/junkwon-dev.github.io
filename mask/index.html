@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>마스크 재고 알기</title>
+    <link rel="stylesheet" href="index.css" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+</head>
+
+<body class="bg-dark text-white tit">
+    <br>
+    <div>
+        <h1>마스크 재고 사이트</h1>
+        <p>도-시-구-동을 입력하여 마스크 재고를 확인합니다.<br><br>ex)충청남도 천안시 서북구 -> 충청남도를 빼면 기능하지 않음<br>ex2)충청남도 천안시 서북구
+            백석동 -> 동은 붙여도 되고 안 붙여도 됨.<br>ex3)경기도 화성시 반송동<br>ex4)(서울은)서울특별시 강남구 </p>
+    </div>
+
+    <br>
+    <form class="js-form">
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text" id="inputGroup-sizing-default">도 시 구 (동)</span>
+            </div>
+            <input type="text" class="form-control" aria-label="Sizing example input"
+                aria-describedby="inputGroup-sizing-default">
+            <button class="btn btn-secondary">확인하기</button>
+        </div>
+
+    </form>
+
+    <br>
+    <div style="overflow-x:auto;">
+        <table class="table table-dark" style="width: 100%; min-width: 700px;">
+            <tr>
+                <th>판매처 주소</th>
+                <th>판매처 유형</th>
+                <th>데이터가 갱신된 시간</th>
+                <th>마스크가 입고된 시간</th>
+                <th>재고 상태</th>
+
+            </tr>
+
+        </table>
+    </div>
+    <script src="mask.js"></script>
+    <!---<script src="clock.js"></script>
+        <script src="greeting.js"></script>-->
+</body>
+
+</html>
