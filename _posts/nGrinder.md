@@ -1,0 +1,142 @@
+---
+title:  "nGrinder 설치 가이드"
+excerpt: "SoMa과정 중 nGrinder 설치 가이드를 따라하하는 글"
+
+categories:
+  - blog
+tags:
+  - Web Stress test tool
+  - nGrinder
+  - Guide
+last_modified_at: 2020-10-02 17:13:00
+toc: true
+toc_sticky: true
+---
+
+### 개요
+
+SoMa Create Trend 서비스 제작 과정 중 부하테스트를 위한 과정에 사용한 ``ngrinder`` 에 대해 정리하는 글이다.
+
+더불어 멘토님의 조언에 따라 nGrinder Official Document Guide를 따른다.
+
+###  Installation Guide
+
+#### Prerequisite
+
+- nGrinder는 web application(Controller)과 Java applications(Agent, Monitor)로 이루어져있다. nGrinder Agent와 Monitor는 Oracle JDK 1.6~ OpenJDK 1.7~ 이 필요하다.
+
+- 자바의 환경변수가 제대로 설정되어있는지 확인한다.
+- nGrinder는 많은 포트를 사용하기때문에 그 포트들이 방화벽에 막혀있다면 열어주어야 한다.
+  - Agent : Any ==> Controller : 16001
+  - Agent : Any ==> Controller : 12000 ~ 12000+(the number of concurrent tests allowed)
+  - Controller : Any ==> Monitor : 13243
+  - Controller ==> Public user : This is dependent on your tomcat configuration. By default, it is set as 8080.
+
+#### Download
+
+- https://github.com/naver/ngrinder/releases
+
+#### Install Controller
+
+nGrinder는 독립 실행이 가능한 jenkins파일처럼 web archive file로 배포되었고, 자신에게 친숙한 web application server로 실행할 수 있다.
+
+__! 파일 경로에 "C:\\Program Files"처럼  공백이 들어가면 안된다.__
+
+#### Run on Docker
+
+도커로 실행하길 원한다면 https://hub.docker.com/r/ngrinder/controller/ 참조
+
+#### Run as self executable
+
+독립적으로 실행하고싶을경우
+
+1. 환경변수 PATH와 JAVA_HOME을 미리 설정한다.
+
+2. nGrinder controller를 실행한다. (이 방법은 오류가 생긴다.)
+
+   ```
+   java -jar ngrinder-controller-X.X.war
+   ```
+
+3. 위 방법은 nGrinder가 SVNKit, maven, Jetty webserver, groovy, 그리고 python 등의 라이브러리를 사용하여 매우 큰 PermGen 메모리를 필요로 하기 때문에 오류가 생긴다. 다음과 같은 커맨드로 nGrinder controller를 실행한다.
+
+   ```
+   java -XX:MaxPermSize=200m -jar  ngrinder-controller-3.4.war
+   ```
+
+4. 만약 포트를 자신이 원하는 대로 할당하고 싶은 경우 다음과 같은 커맨드로 실행한다.
+
+   ```
+   java -XX:MaxPermSize=200m -jar  ngrinder-controller-3.4.war --port 80
+   ```
+
+5. war 파일을 실행하는 동안 war이 ~/.ngrinder/webapp 폴더에 추출되고, 여러가지 데이터들이 .ngrinder 폴더에 저장된다.
+
+6. 다음과 같은 로그 메시지를 보면 ngrinder controller가 준비된 상태다.
+
+   ```
+   INFO 14. 1. 20 오후 4:39:liquibase: ChangeSet ngrinder_datachange_logfile/db.changelog_schema_22.xml::22::ngrinder.3.3 r
+   an successfully in 4ms
+   
+   INFO 14. 1. 20 오후 4:39:liquibase: ChangeSet ngrinder_datachange_logfile/db.changelog_schema_23.xml::23::ngrinder.3.3 r
+   an successfully in 7ms
+   
+   INFO 14. 1. 20 오후 4:39:liquibase: ChangeSet ngrinder_datachange_logfile/db.changelog_schema_24.xml::24::ngrinder.3.3 r
+   an successfully in 2ms
+   
+   INFO 14. 1. 20 오후 4:39:liquibase: ChangeSet ngrinder_datachange_logfile/db.changelog_schema_25.xml::25::ngrinder.3.3 r
+   an successfully in 7ms
+   
+   INFO 14. 1. 20 오후 4:39:liquibase: ChangeSet ngrinder_datachange_logfile/db.changelog_schema_26.xml::26::ngrinder.3.3 r
+   an successfully in 8ms
+   
+   2014-01-20 16:39:30.633:INFO:/:Initializing Spring FrameworkServlet 'appServlet'
+   
+   2014-01-20 16:39:31.141:INFO::Started SocketConnector@@0.0.0.0:8080
+   ```
+
+7. 브라우저를 열고 http://localhost:8080/ 에 들어가보자.
+
+#### Run on Tomcat
+
+이 부분에 대해선 다루지 않는다. https://github.com/naver/ngrinder/wiki/Installation-Guide 를 참조한다.
+
+### More
+
+2. 자신이 원하는 대로 옵션을 커스터마이징할 수 있다.
+
+### Install Agents
+
+nGrinder 최신 버전부터 agents를 controller로부터 다운받는다. agent package가 이미 controller에 포함되어있다. 
+
+tar file 압축을 풀고 run_agent.sh나 run_agent.bat을 실행하면 agent가 controller에 연결된다.
+
+1. admin으로 로그인한다. 기본 비밀번호도 admin이다.
+
+![Installation-Guide-8b049](https://user-images.githubusercontent.com/48988862/94887942-8828d800-04b2-11eb-8f95-5dd7ee4ef7a2.png)
+
+2. 
+
+![Installation-Guide-262d2](https://user-images.githubusercontent.com/48988862/94887970-9840b780-04b2-11eb-9357-e34f10924810.png)
+
+3. tar파일이 다운로드된다.
+4. 압축을 푼 뒤 run_agent 파일을 실행한다.
+5. agent를 실행하면, 최신 설정파일으로 덮어씌워진다.
+6. agent를 중지시키려면 stop_agent 파일을 실행한다.
+7. nGrinder 3.3에서, 연결된 agent가 자동으로 controller에 승인된다. 이미 있는 configuration을 승인하려면, agent에서 직접 승인해주어야 한다.
+
+### Install Monitor
+
+nGrinder 모니터 또한 controller에서 다운받을 수 있다.
+
+1. Monitor를 다운로드 받는다.
+
+   ![Installation-Guide-96872](https://user-images.githubusercontent.com/48988862/94888235-611ed600-04b3-11eb-9f3b-80c07bfa9cda.png)
+
+2. 압축을 푼 뒤 run_montor_bg나 run_monitor를 실행한다.
+3. Monitor를 종료하려면, stop_monitor를 실행한다.
+
+
+
+nGrinder준비가 되었으므로 [Quick Start](https://github.com/naver/ngrinder/wiki/Quick-Start) 에서 실행해본다.
+
