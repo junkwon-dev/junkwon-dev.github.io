@@ -99,7 +99,7 @@ Redis를 사용하게 된 이유는 다음과 같다.
 
 아키텍쳐를 고민하고 데이터의 형태를 분석하고 나니 개발은 금방 이루어졌다.
 
-Publish
+**Publish**
 
 Redis는 토픽을 자유롭게 설정할 수 있고 발행시 구독자가 없다면 자동으로 휘발되기 때문에 채널의 생성 및 삭제를 고려할 필요 없이 각 언어에서 제공하는 redis 라이브러리를 사용하여 publish method를 이용하면 간단하다.
 
@@ -107,7 +107,7 @@ Redis는 토픽을 자유롭게 설정할 수 있고 발행시 구독자가 없�
 
 <img width="650" alt="스크린샷 2021-12-24 오후 4 51 14" src="https://user-images.githubusercontent.com/48988862/148213805-35897441-658c-4507-9879-1887fb0477a3.png">
 
-Subscribe
+**Subscribe**
 
 위에 작성했다시피 Graphql에서는 이런 실시간 서비스를 쉽게 구현할 수 있도록 Subscription이라는 Operation type이 존재하고 [graphql-redis-subscriptions](https://github.com/davidyaha/graphql-redis-subscriptions) redis 전용 asyncIterator 구현체도 이미 존재한다.
 
@@ -135,7 +135,8 @@ Subscribe
 
 ### TEST
 
-<video src="/Users/jun/Desktop/화면 기록 2021-12-24 오후 5.08.36.mov"></video>
+<video src="https://user-images.githubusercontent.com/48988862/148215081-5596d195-0463-488a-8d8e-ec303fcc1a9e.mov
+"></video>
 
 **알림을 두번 Publish 했을 때 실시간으로 두개의 알림이 도착**하는 영상
 
