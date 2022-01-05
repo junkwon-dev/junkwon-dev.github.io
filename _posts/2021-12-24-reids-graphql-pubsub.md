@@ -1,4 +1,4 @@
-```
+---
 title:  "Redis를 활용한 실시간 알림 서비스 제작기 (Graphql-PubSub)"
 excerpt: "redis-graphql-pubsub을 활용한 실시간 알림 서비스 제작기를 소개하고, 왜 이런 아키텍쳐를 적용했는지에 대해 알아본다."
 
@@ -12,7 +12,7 @@ tags:
 last_modified_at: 2021-12-24 19:36:00
 toc: true
 toc_sticky: true
-```
+---
 
 
 
@@ -138,3 +138,4 @@ Subscribe
 <video src="/Users/jun/Desktop/화면 기록 2021-12-24 오후 5.08.36.mov"></video>
 
 **알림을 두번 Publish 했을 때 실시간으로 두개의 알림이 도착**하는 영상
+
